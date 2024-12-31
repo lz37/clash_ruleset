@@ -1,0 +1,7 @@
+# NAME: Direct
+# AUTHOR: zerozawa
+# REPO: https://github.com/lz37/clash_ruleset
+# PROCESS-NAME: 2
+# TOTAL: 2
+PROCESS-NAME,tailscale
+PROCESS-NAME,tailscaled
