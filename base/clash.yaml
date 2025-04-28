@@ -1,170 +1,91 @@
-# generated from openclash
+# yaml-language-server: $schema=https://github.com/dongchengjie/meta-json-schema/releases/download/v1.19.5/clash-nyanpasu-merge-json-schema.json
 port: 7890
 socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: error
+external-controller: 127.0.0.1:9090
 redir-port: 7892
 tproxy-port: 7895
 mixed-port: 7893
-allow-lan: true
-mode: rule
-log-level: warning
-external-controller: 0.0.0.0:9090
-disable-keep-alive: true
-bind-address: "*"
+bind-address: "127.0.0.1"
+keep-alive-interval: 15
+keep-alive-idle: 600
 ipv6: true
 geodata-mode: true
 geodata-loader: standard
 tcp-concurrent: true
 unified-delay: true
 find-process-mode: always
+global-client-fingerprint: random
 profile:
   store-selected: true
-  store-fake-ip: true
 dns:
   enable: true
   ipv6: true
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  enhanced-mode: redir-host
   listen: 0.0.0.0:7874
-  respect-rules: true
-  proxy-server-nameserver:
-  - https://1.1.1.1/dns-query
-  - https://8.8.8.8/dns-query
-  direct-nameserver:
-  - https://1.12.12.12/dns-query
-  - https://223.5.5.5/dns-query
   nameserver-policy:
-    ".zerozawa.top": https://1.12.12.12/dns-query
-  fake-ip-filter-mode: blacklist
-  default-nameserver:
-  - https://1.12.12.12/dns-query
-  - https://223.5.5.5/dns-query
-  - https://1.1.1.1/dns-query
-  - https://8.8.8.8/dns-query
+    geosite:category-games@cn:
+    - https://doh.pub/dns-query
+    - 114.114.114.114
+    - 223.5.5.5
+    geosite:cn:
+    - https://doh.pub/dns-query
+    - 114.114.114.114
+    - 223.5.5.5
+    geosite:atlassian:
+    - https://doh.pub/dns-query
+    - 114.114.114.114
+    - 223.5.5.5
+    "+.zerozawa.top":
+    - 119.29.29.29
+    - 119.28.28.28
+    - '2402:4e00::'
+    "+.wanghua.link":
+    - 223.5.5.5
+    - 223.6.6.6
+    - 2400:3200::1
+    - 2400:3200:baba::1
+    "+.zfqqjb.top":
+    - 122.112.208.1
+    - 139.9.23.9
+    - 114.115.192.1
+    - 116.205.5.1
   nameserver:
-  - https://1.12.12.12/dns-query
-  - https://223.5.5.5/dns-query
-  - https://doh.360.cn/dns-query
-  - https://sm2.doh.pub/dns-query
-  fake-ip-filter:
-  - "*.lan"
-  - "*.localdomain"
-  - "*.example"
-  - "*.invalid"
-  - "*.localhost"
-  - "*.test"
-  - "*.local"
-  - "*.home.arpa"
-  - time.*.com
-  - time.*.gov
-  - time.*.edu.cn
-  - time.*.apple.com
-  - time-ios.apple.com
-  - time1.*.com
-  - time2.*.com
-  - time3.*.com
-  - time4.*.com
-  - time5.*.com
-  - time6.*.com
-  - time7.*.com
-  - ntp.*.com
-  - ntp1.*.com
-  - ntp2.*.com
-  - ntp3.*.com
-  - ntp4.*.com
-  - ntp5.*.com
-  - ntp6.*.com
-  - ntp7.*.com
-  - "*.time.edu.cn"
-  - "*.ntp.org.cn"
-  - "+.pool.ntp.org"
-  - time1.cloud.tencent.com
-  - music.163.com
-  - "*.music.163.com"
-  - "*.126.net"
-  - musicapi.taihe.com
-  - music.taihe.com
-  - songsearch.kugou.com
-  - trackercdn.kugou.com
-  - "*.kuwo.cn"
-  - api-jooxtt.sanook.com
-  - api.joox.com
-  - joox.com
-  - y.qq.com
-  - "*.y.qq.com"
-  - streamoc.music.tc.qq.com
-  - mobileoc.music.tc.qq.com
-  - isure.stream.qqmusic.qq.com
-  - dl.stream.qqmusic.qq.com
-  - aqqmusic.tc.qq.com
-  - amobile.music.tc.qq.com
-  - "*.xiami.com"
-  - "*.music.migu.cn"
-  - music.migu.cn
-  - "+.msftconnecttest.com"
-  - "+.msftncsi.com"
-  - localhost.ptlogin2.qq.com
-  - localhost.sec.qq.com
-  - "+.qq.com"
-  - "+.tencent.com"
-  - "+.srv.nintendo.net"
-  - "*.n.n.srv.nintendo.net"
-  - "+.stun.playstation.net"
-  - xbox.*.*.microsoft.com
-  - "*.*.xboxlive.com"
-  - xbox.*.microsoft.com
-  - xnotify.xboxlive.com
-  - "+.battlenet.com.cn"
-  - "+.wotgame.cn"
-  - "+.wggames.cn"
-  - "+.wowsgame.cn"
-  - "+.wargaming.net"
-  - proxy.golang.org
-  - stun.*.*
-  - stun.*.*.*
-  - "+.stun.*.*"
-  - "+.stun.*.*.*"
-  - "+.stun.*.*.*.*"
-  - "+.stun.*.*.*.*.*"
-  - heartbeat.belkin.com
-  - "*.linksys.com"
-  - "*.linksyssmartwifi.com"
-  - "*.router.asus.com"
-  - mesu.apple.com
-  - swscan.apple.com
-  - swquery.apple.com
-  - swdownload.apple.com
-  - swcdn.apple.com
-  - swdist.apple.com
-  - lens.l.google.com
-  - stun.l.google.com
-  - na.b.g-tun.com
-  - "+.nflxvideo.net"
-  - "*.square-enix.com"
-  - "*.finalfantasyxiv.com"
-  - "*.ffxiv.com"
-  - "*.ff14.sdo.com"
-  - ff.dorado.sdo.com
-  - "*.mcdn.bilivideo.cn"
-  - "+.media.dssott.com"
-  - shark007.net
-  - Mijia Cloud
-  - "+.cmbchina.com"
-  - "+.cmbimg.com"
-  - local.adguard.org
-  - "+.sandai.net"
-  - "+.n0808.com"
-  - "*.zerozawa.top"
-  - "*.cachix.org"
-  - geosite:cn
+  - 119.29.29.29
+  - 119.28.28.28
+  - 223.5.5.5
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
   fallback:
+  - https://dns.quad9.net/dns-query
+  - https://dns.google/dns-query
+  - https://1.1.1.1/dns-query
+  - https://public.dns.iij.jp/dns-query
+  - https://jp.tiarap.org/dns-query
+  - https://doh.dnslify.com/dns-query
+  - https://dns.twnic.tw/dns-query
+  - https://dns.oszx.co/dns-query
+  - https://doh.applied-privacy.net/query
+  - https://dnsforge.de/dns-query
+  - https://doh.ffmuc.net/dns-query
+  - https://doh.mullvad.net/dns-query
+  default-nameserver:
+  - 119.29.29.29
+  - 119.28.28.28
+  - 223.5.5.5
   - https://1.1.1.1/dns-query
   - https://8.8.8.8/dns-query
-  - https://dnsforge.de/dns-query
-  - https://doh.opendns.com/dns-query
+  - https://9.9.9.9/dns-query
+  - https://101.101.101.101/dns-query
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
+    - ::/128
+    - ::1/128
+    - 2001::/32
     - 0.0.0.0/8
     - 10.0.0.0/8
     - 100.64.0.0/10
@@ -183,22 +104,24 @@ dns:
     - 255.255.255.255/32
     domain:
     - "+.google.com"
+    - "+.github.com"
+    - "+.jsdelivr.net"
     - "+.facebook.com"
     - "+.youtube.com"
     - "+.githubusercontent.com"
     - "+.googlevideo.com"
     - "+.msftconnecttest.com"
     - "+.msftncsi.com"
-    - "+.docker.io"
+    - "+.flathub.org"
+    - "+.bitnami.com"
 sniffer:
   enable: true
-  parse-pure-ip: true
-  force-dns-mapping: true
-  override-destination: false
+  override-destination: true
   sniff:
     QUIC:
       ports:
       - 443
+      - 8443
     TLS:
       ports:
       - 443
@@ -209,11 +132,15 @@ sniffer:
       - 8080-8880
       override-destination: true
   force-domain:
-  - "+.netflix.com"
-  - "+.nflxvideo.net"
-  - "+.amazonaws.com"
-  - "+.media.dssott.com"
-  - "+.cachix.org"
+  - "+.google.com"
+  - "+.facebook.com"
+  - "+.youtube.com"
+  - "+.githubusercontent.com"
+  - "+.googlevideo.com"
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - "+.docker.io"
+  - +.v2ex.com
   skip-domain:
   - "+.apple.com"
   - Mijia Cloud
@@ -221,3 +148,14 @@ sniffer:
   - "+.oray.com"
   - "+.sunlogin.net"
   - "+.push.apple.com"
+  force-dns-mapping: true
+  parse-pure-ip: true
+tun:
+  # enable: false
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  gso: true
+  strict-route: false
+  endpoint-independent-nat: false
+  udp-timeout: 300
