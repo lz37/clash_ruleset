@@ -115,7 +115,6 @@ dns:
     domain:
     - "+.google.com"
     - "+.github.com"
-    - "+.jsdelivr.net"
     - "+.facebook.com"
     - "+.youtube.com"
     - "+.githubusercontent.com"
@@ -150,7 +149,12 @@ sniffer:
   - "+.msftconnecttest.com"
   - "+.msftncsi.com"
   - "+.docker.io"
-  - +.v2ex.com
+  - "+.v2ex."
+  - "+.jsdelivr.net"
+  - "+.netflix.com"
+  - "+.nflxvideo.net"
+  - "+.amazonaws.com"
+  - "+.media.dssott.com"
   skip-domain:
   - "+.apple.com"
   - Mijia Cloud
@@ -158,6 +162,7 @@ sniffer:
   - "+.oray.com"
   - "+.sunlogin.net"
   - "+.push.apple.com"
+  - geosite:cn
   force-dns-mapping: true
   parse-pure-ip: true
 tun:
