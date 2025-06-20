@@ -149,7 +149,7 @@ sniffer:
   - "+.msftconnecttest.com"
   - "+.msftncsi.com"
   - "+.docker.io"
-  - "+.v2ex."
+  - "+.v2ex.com"
   - "+.jsdelivr.net"
   - "+.netflix.com"
   - "+.nflxvideo.net"
