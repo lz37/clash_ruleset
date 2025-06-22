@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://github.com/dongchengjie/meta-json-schema/releases/download/v1.19.5/clash-nyanpasu-merge-json-schema.json
+# yaml-language-server: $schema=https://github.com/dongchengjie/meta-json-schema/releases/download/v1.19.10/meta-json-schema.json
 .fallback: &fallback
   - https://dns.quad9.net/dns-query
   - https://dns.google/dns-query
@@ -130,16 +130,17 @@ dns:
       - 240.0.0.0/4
       - 255.255.255.255/32
     domain:
-      - "+.google.com"
-      - "+.github.com"
-      - "+.facebook.com"
-      - "+.youtube.com"
-      - "+.githubusercontent.com"
-      - "+.googlevideo.com"
+      - geosite:google
+      - geosite:facebook
+      - geosite:github
+      - geosite:youtube
+      - geosite:amazon
+      - geosite:disney
+      - geosite:netflix
       - "+.msftconnecttest.com"
       - "+.msftncsi.com"
-      - "+.flathub.org"
-      - "+.bitnami.com"
+      - +.flathub.org
+      - +.bitnami.com
 sniffer:
   enable: true
   override-destination: true
@@ -158,27 +159,22 @@ sniffer:
         - 8080-8880
       override-destination: true
   force-domain:
-    - "+.google.com"
-    - "+.facebook.com"
-    - "+.youtube.com"
-    - "+.githubusercontent.com"
-    - "+.googlevideo.com"
-    - "+.msftconnecttest.com"
-    - "+.msftncsi.com"
-    - "+.docker.io"
+    - geosite:google
+    - geosite:facebook
+    - geosite:github
+    - geosite:youtube
+    - geosite:docker
+    - geosite:jsdelivr
+    - geosite:netflix
+    - geosite:disney
+    - geosite:microsoft
+    - geosite:amazon
     - "+.v2ex.com"
-    - "+.jsdelivr.net"
-    - "+.netflix.com"
-    - "+.nflxvideo.net"
-    - "+.amazonaws.com"
-    - "+.media.dssott.com"
   skip-domain:
-    - "+.apple.com"
-    - Mijia Cloud
-    - dlg.io.mi.com
-    - "+.oray.com"
-    - "+.sunlogin.net"
-    - "+.push.apple.com"
+    - geosite:apple
+    - geosite:microsoft@cn
+    - geosite:category-collaborate-cn
+    - geosite:xiaomi
     - geosite:cn
   force-dns-mapping: true
   parse-pure-ip: true
