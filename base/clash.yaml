@@ -65,7 +65,7 @@ dns:
   enhanced-mode: redir-host
   listen: 0.0.0.0:7874
   nameserver-policy:
-    ruleset:🛜 Zerotier: *fallback
+    "+.zerotier.com": *fallback
     geosite:category-games@cn:
       - https://doh.pub/dns-query
       - 114.114.114.114
