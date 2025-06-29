@@ -84,7 +84,8 @@ dns:
       - 139.9.23.9
       - 114.115.192.1
       - 116.205.5.1
-  nameserver: ## 参考 https://dns.icoa.cn
+  ## 参考 https://dns.icoa.cn
+  nameserver:
     # dnspod
     - 119.29.29.29
     - 119.28.28.28
