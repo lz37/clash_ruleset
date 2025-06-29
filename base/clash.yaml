@@ -120,7 +120,6 @@ dns:
     - 2400:7fc0:849e:200::8
     - 2404:c2c0:85d8:901::8
     - https://doh-pure.onedns.net/dns-query
-    -
   fallback: *fallback-ipv4
   default-nameserver:
     - 119.29.29.29
