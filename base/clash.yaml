@@ -1,33 +1,4 @@
 # yaml-language-server: $schema=https://github.com/dongchengjie/meta-json-schema/releases/download/v1.19.11/meta-json-schema.json
-.fallback: &fallback
-  - https://dns.quad9.net/dns-query
-  - https://8.8.8.8/dns-query
-  - https://1.1.1.1/dns-query
-  - https://public.dns.iij.jp/dns-query
-  - https://jp.tiarap.org/dns-query
-  - https://doh.dnslify.com/dns-query
-  - https://dns.twnic.tw/dns-query
-  - https://dns.oszx.co/dns-query
-  - https://doh.applied-privacy.net/query
-  - https://dnsforge.de/dns-query
-  - https://doh.ffmuc.net/dns-query
-  - https://doh.mullvad.net/dns-query
-  - https://dns.twnic.tw/dns-query
-.fallback-ipv4: &fallback-ipv4
-  - https://dns.quad9.net/dns-query#disable-ipv6=true
-  - https://8.8.8.8/dns-query#disable-ipv6=true
-  - https://1.1.1.1/dns-query#disable-ipv6=true
-  - https://public.dns.iij.jp/dns-query#disable-ipv6=true
-  - https://jp.tiarap.org/dns-query#disable-ipv6=true
-  - https://doh.dnslify.com/dns-query#disable-ipv6=true
-  - https://dns.twnic.tw/dns-query#disable-ipv6=true
-  - https://dns.oszx.co/dns-query#disable-ipv6=true
-  - https://doh.applied-privacy.net/query#disable-ipv6=true
-  - https://dnsforge.de/dns-query#disable-ipv6=true
-  - https://doh.ffmuc.net/dns-query#disable-ipv6=true
-  - https://doh.mullvad.net/dns-query#disable-ipv6=true
-  - https://dns.twnic.tw/dns-query#disable-ipv6=true
-
 port: 7890
 socks-port: 7891
 allow-lan: true
@@ -53,7 +24,7 @@ geox-url:
   mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
   asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
 tcp-concurrent: true
-unified-delay: true
+unified-delay: false
 find-process-mode: strict
 global-client-fingerprint: random
 profile:
@@ -64,12 +35,11 @@ dns:
   ipv6: true
   enhanced-mode: redir-host
   listen: 0.0.0.0:7874
+  prefer-h3: true
+  respect-rules: true
+  use-hosts: true
   nameserver-policy:
-    "+.zerotier.com": *fallback
-    geosite:category-games@cn,cn,atlassian:
-      - https://doh.pub/dns-query
-      - 114.114.114.114
-      - 223.5.5.5
+    # DDNS
     "+.zerozawa.top":
       - 119.29.29.29
       - 119.28.28.28
@@ -84,79 +54,68 @@ dns:
       - 139.9.23.9
       - 114.115.192.1
       - 116.205.5.1
-  ## 参考 https://dns.icoa.cn
+    # DDNS
+    # 国内
+    geosite:cn,apple-cn,category-games@cn,private,atlassian:
+      # 运营商dns
+      - 218.2.2.2
+      - 218.4.4.4
+      - 240e:5b::6666
+      - 240e:5a::6666
+      # dnspod
+      # - 119.29.29.29
+      # - 119.28.28.28
+      # - "2402:4e00::"
+      # - "2402:4e00:1::"
+      # - https://doh.pub/dns-query
+      # - https://sm2.doh.pub/dns-query
+      # alidns
+      # - 223.5.5.5
+      # - 223.6.6.6
+      # - 2400:3200::1
+      # - 2400:3200:baba::1
+      # - https://dns.alidns.com/dns-query
+      # 114
+      # - 114.114.114.114
+      # - 114.114.115.115
+      # baidu
+      # - 180.76.76.76
+      # 360
+      # - 101.226.4.6
+      # - 218.30.118.6
+      # - https://doh.360.cn/dns-query
+      # 字节
+      # - 180.184.1.1
+      # - 180.184.2.2
+      # cnnic
+      # - 1.2.4.8
+      # - 210.2.4.8
+      # onedns
+      # - 117.50.10.10
+      # - 52.80.52.52
+      # - 2400:7fc0:849e:200::8
+      # - 2404:c2c0:85d8:901::8
+      # - https://doh-pure.onedns.net/dns-query
   nameserver:
-    # dnspod
-    - 119.29.29.29
-    - 119.28.28.28
-    - '2402:4e00::'
-    - '2402:4e00:1::'
-    - https://doh.pub/dns-query
-    - https://sm2.doh.pub/dns-query
-    # baidu
-    - 223.5.5.5
-    - 223.6.6.6
-    - 2400:3200::1
-    - 2400:3200:baba::1
-    - https://dns.alidns.com/dns-query
-    # 114
-    - 114.114.114.114
-    - 114.114.115.115
-    # baidu
-    - 180.76.76.76
-    # 360
-    - 101.226.4.6
-    - 218.30.118.6
-    - https://doh.360.cn/dns-query
-    # 字节
-    - 180.184.1.1
-    - 180.184.2.2
-    # cnnic
-    - 1.2.4.8
-    - 210.2.4.8
-    # onedns
-    - 117.50.10.10
-    - 52.80.52.52
-    - 2400:7fc0:849e:200::8
-    - 2404:c2c0:85d8:901::8
-    - https://doh-pure.onedns.net/dns-query
-  fallback: *fallback-ipv4
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+    - https://dns.quad9.net/dns-query
+    - https://dns.twnic.tw/dns-query
+    - https://public.dns.iij.jp/dns-query
+    - https://jp.tiarap.org/dns-query
+    - https://doh.dnslify.com/dns-query
+    - https://dns.twnic.tw/dns-query
+    - https://dns.oszx.co/dns-query
+    - https://doh.applied-privacy.net/query
+    - https://dnsforge.de/dns-query
+    - https://doh.ffmuc.net/dns-query
+    - https://doh.mullvad.net/dns-query
   default-nameserver:
     - 119.29.29.29
     - 223.5.5.5
-    - https://1.1.1.1/dns-query#disable-ipv6=true
-    - https://8.8.8.8/dns-query#disable-ipv6=true
-    # - https://9.9.9.9/dns-query#disable-ipv6=true
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - ::/128
-      - ::1/128
-      - 2001::/32
-      - 0.0.0.0/8
-      - 10.0.0.0/8
-      - 100.64.0.0/10
-      - 127.0.0.0/8
-      - 169.254.0.0/16
-      - 172.16.0.0/12
-      - 192.0.0.0/24
-      - 192.0.2.0/24
-      - 192.88.99.0/24
-      - 192.168.0.0/16
-      - 198.18.0.0/15
-      - 198.51.100.0/24
-      - 203.0.113.0/24
-      - 224.0.0.0/4
-      - 240.0.0.0/4
-      - 255.255.255.255/32
-    domain:
-      - geosite:github
-      - geosite:google,youtube,amazon
-      - "+.msftconnecttest.com"
-      - "+.msftncsi.com"
-      - +.flathub.org
-      - +.bitnami.com
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 sniffer:
   enable: true
   override-destination: true
@@ -174,13 +133,10 @@ sniffer:
         - 80
         - 8080-8880
       override-destination: true
-  force-domain:
-    - geosite:docker,github,jsdelivr
-    - geosite:google
-    - "+.v2ex.com"
   skip-domain:
-    - geosite:cn,category-collaborate-cn,xiaomi
-    - geosite:apple,microsoft@cn
+    - "Mijia Cloud"
+    - dlg.io.mi.com
+    - "+.push.apple.com"
   force-dns-mapping: true
   parse-pure-ip: true
 tun:
@@ -192,3 +148,8 @@ tun:
   strict-route: false
   endpoint-independent-nat: false
   udp-timeout: 300
+  # 排除 zerotier 或 headscale 的地址
+  route-exclude-address: ["172.22.0.0/16"]
+  dns-hijack:
+    - any:53
+    - tcp://any:53
