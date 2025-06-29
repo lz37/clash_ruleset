@@ -176,8 +176,7 @@ sniffer:
       override-destination: true
   force-domain:
     - geosite:docker,github,jsdelivr
-    - geosite:google,youtube,microsoft,amazon
-    - geosite:microsoft
+    - geosite:google
     - "+.v2ex.com"
   skip-domain:
     - geosite:cn,category-collaborate-cn,xiaomi
