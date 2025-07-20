@@ -141,17 +141,9 @@ dns:
     - https://doh.ffmuc.net/dns-query
     - https://doh.mullvad.net/dns-query
   default-nameserver:
+    - 1.2.4.8
     - 119.29.29.29
     - 223.5.5.5
-    - https://1.1.1.1/dns-query
-    - https://1.1.1.1/dns-query
-    - https://1.0.0.1/dns-query
-    - https://[2606:4700:4700::1111]/dns-query
-    - https://[2606:4700:4700::1001]/dns-query
-    - https://8.8.8.8/dns-query
-    - https://208.67.222.222/dns-query
-    - https://208.67.220.220/dns-query
-    - https://208.67.222.123/dns-query
   proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
