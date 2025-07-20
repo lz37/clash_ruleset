@@ -116,14 +116,8 @@ dns:
     - https://dns.bebasid.com/unfiltered
     # LibreDNS
     - https://doh.libredns.gr/dns-query
-    - tls://116.202.176.26
-    - tls://[2a01:4f8:1c0c:8274::1]
     # SWITCH DNS
     - https://dns.switch.ch/dns-query
-    - tls://130.59.31.248
-    - tls://130.59.31.251
-    - tls://[2001:620:0:ff::2]
-    - tls://[2001:620:0:ff::3]
     # 0ms.dev
     - https://0ms.dev/dns-query
     # Comss.one DNS
@@ -132,12 +126,6 @@ dns:
     - https://dnspub.restena.lu/dns-query
     - https://kaitain.restena.lu/dns-query
     # AhaDNS
-    - tls://dot.nl.ahadns.net
-    - tls://5.2.75.75
-    - tls://[2a04:52c0:101:75::75]
-    - tls://dot.la.ahadns.net
-    - tls://45.67.219.208
-    - tls://[2a04:bdc7:100:70::70]
     - https://doh.nl.ahadns.net/dns-query
     - https://doh.la.ahadns.net/dns-query
 
@@ -164,16 +152,6 @@ dns:
     - https://208.67.222.222/dns-query
     - https://208.67.220.220/dns-query
     - https://208.67.222.123/dns-query
-    - tls://116.202.176.26
-    - tls://[2a01:4f8:1c0c:8274::1]
-    - tls://130.59.31.248
-    - tls://130.59.31.251
-    - tls://[2001:620:0:ff::2]
-    - tls://[2001:620:0:ff::3]
-    - tls://5.2.75.75
-    - tls://[2a04:52c0:101:75::75]
-    - tls://45.67.219.208
-    - tls://[2a04:bdc7:100:70::70]
   proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
