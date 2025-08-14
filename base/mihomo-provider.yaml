@@ -382,7 +382,7 @@ tun:
   auto-detect-interface: true
   gso: true
   strict-route: false
-  endpoint-independent-nat: false
+  endpoint-independent-nat: true
   udp-timeout: 300
   route-exclude-address: [172.22.0.0/16]
   dns-hijack:
