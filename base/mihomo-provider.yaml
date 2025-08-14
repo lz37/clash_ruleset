@@ -196,10 +196,14 @@ rule-providers:
   Download:
     <<: *rule-providers-http-common-text
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.list
+  STUN:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/STUN/STUN.list
 rules:
   - GEOSITE,private,🎯 全球直连
   - GEOIP,private,🎯 全球直连,no-resolve
   - RULE-SET,zerozawa.direct,🎯 全球直连
+  - RULE-SET,STUN,🎯 全球直连
   - RULE-SET,zerozawa.proxy,🚀 节点选择
   - RULE-SET,Direct,🎯 全球直连
   - GEOSITE,google-cn,🎯 全球直连
