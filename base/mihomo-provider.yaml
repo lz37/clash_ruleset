@@ -353,6 +353,8 @@ dns:
     - 119.29.29.29
     - 223.5.5.5
   proxy-server-nameserver:
+    # 清华
+    - 2402:f000:1:416:101:6:6:6
     - 1.2.4.8
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
