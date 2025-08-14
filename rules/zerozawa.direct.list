@@ -5,3 +5,5 @@
 # TOTAL: 2
 PROCESS-NAME,tailscale
 PROCESS-NAME,tailscaled
+PROCESS-NAME,lucky
+PROCESS-NAME,zerotier-one
