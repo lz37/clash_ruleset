@@ -347,6 +347,8 @@ dns:
     - https://doh.ffmuc.net/dns-query
     - https://doh.mullvad.net/dns-query
   default-nameserver:
+    # 清华
+    - 2402:f000:1:416:101:6:6:6
     - 1.2.4.8
     - 119.29.29.29
     - 223.5.5.5
