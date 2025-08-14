@@ -6,3 +6,5 @@
 PROCESS-NAME,tailscale
 PROCESS-NAME,tailscaled
 PROCESS-NAME,zerotier-one
+# 禁用stun端口号
+DST-PORT,3478

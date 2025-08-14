@@ -375,11 +375,12 @@ sniffer:
     - Mijia Cloud
     - dlg.io.mi.com
     - +.push.apple.com
-    - +.v2ex.com
   force-dns-mapping: true
   parse-pure-ip: true
   force-domain:
     - geosite:github
+    - rule-set:STUN
+    - +.v2ex.com
 tun:
   stack: mixed
   auto-route: true
