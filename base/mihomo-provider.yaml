@@ -1,0 +1,390 @@
+# yaml-language-server: $schema=https://github.com/dongchengjie/meta-json-schema/releases/download/v1.19.11/meta-json-schema.json
+proxy-providers-common: &proxy-providers-common
+  type: http
+  interval: 86400
+  proxy: DIRECT
+  size-limit: 0
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    timeout: 5000
+    lazy: true
+    expected-status: 204
+  exclude-filter: (?i)距离下次重置剩余|套餐到期|剩余流量|官网|GooglePlay|防失联|特殊时期
+proxy-providers:
+  xxx:
+    <<: *proxy-providers-common
+    url: https://xxx.xxx/xxx
+    override:
+      additional-prefix: xxx
+
+url-test-common: &url-test-common
+  type: url-test
+  include-all: true
+  tolerance: 20
+  interval: 150
+select-url-test: &select-url-test
+  type: select
+  proxies: &select-proxies-url-test
+    - 🚀 节点选择
+    - ♻️ 自动选择
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+    - 🚀 手动切换
+    - 🎯 全球直连
+proxy-groups:
+  - name: 🚀 节点选择
+    <<: *select-url-test
+    proxies:
+      - ♻️ 自动选择
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🚀 手动切换
+      - 🎯 全球直连
+  - name: 🐈‍⬛ GitHub
+    <<: *select-url-test
+  - name: 🐟 docker
+    <<: *select-url-test
+  - name: 💬 即时通讯
+    <<: *select-url-test
+  - name: 🌐 社交媒体
+    <<: *select-url-test
+  - name: 🧑🏻‍💼 LinkedIn
+    <<: *select-url-test
+  - name: 🤖 ChatGPT
+    <<: *select-url-test
+  - name: 🤖 Copilot
+    <<: *select-url-test
+  - name: 🤖 AI服务
+    <<: *select-url-test
+  - name: 🎶 TikTok
+    <<: *select-url-test
+  - name: 📹 YouTube
+    <<: *select-url-test
+  - name: 🎥 Netflix
+    <<: *select-url-test
+  - name: 🎥 DisneyPlus
+    <<: *select-url-test
+  - name: 🎥 HBO
+    <<: *select-url-test
+  - name: 🎥 AppleTV+
+    <<: *select-url-test
+  - name: 🎥 PrimeVideo
+    <<: *select-url-test
+  - name: 🎥 Emby
+    <<: *select-url-test
+  - name: 🎻 Spotify
+    <<: *select-url-test
+  - name: 📺 Bahamut
+    <<: *select-url-test
+    proxies:
+      - 🇹🇼 台湾节点
+      - 🚀 节点选择
+      - 🚀 手动切换
+      - 🎯 全球直连
+  - name: 🎶 网易音乐
+    <<: *select-url-test
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+  - name: 📺 国内媒体
+    <<: *select-url-test
+    proxies:
+      - 🎯 全球直连
+      - 🇹🇼 台湾节点
+      - 🇭🇰 香港节点
+  - name: 🌎 国外媒体
+    <<: *select-url-test
+  - name: 🛒 国外电商
+    <<: *select-url-test
+  - name: 📢 谷歌FCM
+    <<: *select-url-test
+  - name: 🇬 谷歌服务
+    <<: *select-url-test
+  - name: 🍎 苹果服务
+    <<: *select-url-test
+  - name: Ⓜ️ 微软服务
+    <<: *select-url-test
+  - name: 🎮 游戏平台
+    <<: *select-url-test
+  - name: 🎮 Steam
+    <<: *select-url-test
+  - name: 🚀 测速工具
+    <<: *select-url-test
+  - name: 🐟 漏网之鱼
+    <<: *select-url-test
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+  - name: 🇭🇰 香港节点
+    <<: *url-test-common
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港"
+  - name: 🇹🇼 台湾节点
+    <<: *url-test-common
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+  - name: 🇯🇵 日本节点
+    <<: *url-test-common
+    filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|🇯🇵"
+  - name: 🇸🇬 新加坡节点
+    <<: *url-test-common
+    filter: "(?i)新加坡|坡|狮城|SG|Singapore"
+  - name: 🇺🇸 美国节点
+    <<: *url-test-common
+    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates"
+  - name: ♻️ 自动选择
+    <<: *url-test-common
+  - name: 🚀 手动切换
+    type: select
+    include-all: true
+
+rule-providers-http-common:
+  text: &rule-providers-http-common-text
+    type: http
+    behavior: classical
+    interval: 28800
+    format: text
+rule-providers:
+  zerozawa.direct:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/lz37/clash_ruleset@main/rules/zerozawa.direct.list
+  zerozawa.proxy:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/lz37/clash_ruleset@main/rules/zerozawa.proxy.list
+  Direct:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.list
+  GoogleCNProxyIP:
+    <<: *rule-providers-http-common-text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
+  Copilot:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Copilot/Copilot.list
+  XiaoMi:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/XiaoMi/XiaoMi.list
+  Emby:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Emby/Emby.list
+  Emby 2:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/ddgksf2013/Filter@master/Emby.list
+  ChinaMedia:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMedia/ChinaMedia.list
+  GlobalMedia:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia.list
+  Amazon:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Amazon/Amazon.list
+  AmazonIP:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AmazonIP/AmazonIP.list
+  Shopify:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Shopify/Shopify.list
+  Download:
+    <<: *rule-providers-http-common-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.list
+rules:
+  - GEOSITE,private,🎯 全球直连
+  - GEOIP,private,🎯 全球直连,no-resolve
+  - RULE-SET,zerozawa.direct,🎯 全球直连
+  - RULE-SET,zerozawa.proxy,🚀 节点选择
+  - RULE-SET,Direct,🎯 全球直连
+  - GEOSITE,google-cn,🎯 全球直连
+  - RULE-SET,GoogleCNProxyIP,🚀 节点选择
+  - GEOSITE,category-games@cn,🎯 全球直连
+  - GEOSITE,category-game-accelerator-cn,🎯 全球直连
+  - GEOSITE,category-public-tracker,🎯 全球直连
+  - GEOSITE,category-communication,💬 即时通讯
+  - GEOSITE,category-social-media-!cn,🌐 社交媒体
+  - GEOSITE,openai,🤖 ChatGPT
+  - RULE-SET,Copilot,🤖 Copilot
+  - GEOSITE,anthropic,🤖 AI服务
+  - GEOSITE,google-gemini,🤖 AI服务
+  - GEOSITE,docker,🐟 docker
+  - GEOSITE,github,🐈‍⬛ GitHub
+  - GEOSITE,linkedin@cn,🎯 全球直连
+  - GEOSITE,linkedin,🧑🏻‍💼 LinkedIn
+  - GEOSITE,category-speedtest,🚀 测速工具
+  - GEOSITE,youtube,📹 YouTube
+  - GEOSITE,apple-tvplus,🎥 AppleTV+
+  - GEOSITE,apple,🍎 苹果服务
+  - GEOSITE,microsoft,Ⓜ️ 微软服务
+  - RULE-SET,XiaoMi,🎯 全球直连
+  - GEOSITE,googlefcm,📢 谷歌FCM
+  - GEOSITE,google,🇬 谷歌服务
+  - GEOSITE,tiktok,🎶 TikTok
+  - GEOSITE,netflix,🎥 Netflix
+  - GEOSITE,disney,🎥 DisneyPlus
+  - GEOSITE,hbo,🎥 HBO
+  - GEOSITE,primevideo,🎥 PrimeVideo
+  - RULE-SET,Emby,🎥 Emby
+  - RULE-SET,Emby 2,🎥 Emby
+  - GEOSITE,spotify,🎻 Spotify
+  - GEOSITE,bahamut,📺 Bahamut
+  - RULE-SET,ChinaMedia,🎯 全球直连
+  - RULE-SET,GlobalMedia,🌎 国外媒体
+  - RULE-SET,Amazon,🛒 国外电商
+  - RULE-SET,AmazonIP,🛒 国外电商
+  - GEOSITE,shopee,🛒 国外电商
+  - RULE-SET,Shopify,🛒 国外电商
+  - GEOSITE,ozon,🛒 国外电商
+  - GEOSITE,category-entertainment,🌎 国外媒体
+  - GEOSITE,category-ecommerce,🛒 国外电商
+  - GEOSITE,gfw,🚀 节点选择
+  - GEOIP,telegram,💬 即时通讯,no-resolve
+  - GEOIP,twitter,🌐 社交媒体,no-resolve
+  - GEOIP,facebook,🌐 社交媒体,no-resolve
+  - GEOIP,google,🇬 谷歌服务,no-resolve
+  - GEOIP,netflix,🎥 Netflix,no-resolve
+  - GEOSITE,steam,🎮 Steam
+  - GEOSITE,category-games,🎮 游戏平台
+  - RULE-SET,Download,🎯 全球直连
+  - GEOSITE,cn,🎯 全球直连
+  - GEOIP,cn,🎯 全球直连,no-resolve
+  - MATCH,🐟 漏网之鱼
+
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: error
+redir-port: 7892
+tproxy-port: 7895
+mixed-port: 7893
+external-controller: 127.0.0.1:9090
+external-controller-cors:
+  allow-private-network: true
+bind-address: "*"
+keep-alive-interval: 15
+keep-alive-idle: 600
+ipv6: true
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geodata-loader: standard
+geox-url:
+  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  asn: https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
+tcp-concurrent: true
+unified-delay: true
+find-process-mode: strict
+global-client-fingerprint: random
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:7874
+  prefer-h3: true
+  respect-rules: true
+  use-hosts: true
+  nameserver-policy:
+    # ddns start
+    +.zerozawa.top:
+      - 119.29.29.29
+      - 119.28.28.28
+      - "2402:4e00::"
+    +.wanghua.link:
+      - 223.5.5.5
+      - 223.6.6.6
+      - 2400:3200::1
+      - 2400:3200:baba::1
+    +.zfqqjb.top:
+      - 122.112.208.1
+      - 139.9.23.9
+      - 114.115.192.1
+      - 116.205.5.1
+    # ddns end
+    geosite:cn,apple-cn,category-games@cn,private,atlassian:
+      # isp dns
+      - 218.2.2.2
+      - 218.4.4.4
+      - 240e:5b::6666
+      - 240e:5a::6666
+      # isp dns
+      - 1.2.4.8
+      - 210.2.4.8
+      - https://doh-pure.onedns.net/dns-query
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+      - https://doh.360.cn/dns-query
+      - 180.184.1.1
+      - 180.184.2.2
+  nameserver:
+    - https://1.1.1.1/dns-query
+    - https://dns.cloudflare.com/dns-query
+    - https://8.8.8.8/dns-query
+    - https://dns.google/dns-query
+    - https://doh.opendns.com/dns-query
+    - https://dns.quad9.net/dns-query
+    - https://dns.twnic.tw/dns-query
+    - https://public.dns.iij.jp/dns-query
+    - https://jp.tiarap.org/dns-query
+    - https://doh.dnslify.com/dns-query
+    - https://dns.oszx.co/dns-query
+    - https://doh.applied-privacy.net/query
+    - https://dnsforge.de/dns-query
+    - https://doh.ffmuc.net/dns-query
+    - https://doh.mullvad.net/dns-query
+  default-nameserver:
+    - 1.2.4.8
+    - 119.29.29.29
+    - 223.5.5.5
+  proxy-server-nameserver:
+    - 1.2.4.8
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+sniffer:
+  enable: true
+  override-destination: true
+  sniff:
+    QUIC:
+      ports:
+        - 443
+        - 8443
+    TLS:
+      ports:
+        - 443
+        - 8443
+    HTTP:
+      ports:
+        - 80
+        - 8080-8888
+      override-destination: true
+  skip-domain:
+    - Mijia Cloud
+    - dlg.io.mi.com
+    - +.push.apple.com
+    - +.v2ex.com
+  force-dns-mapping: true
+  parse-pure-ip: true
+  force-domain:
+    - geosite:github
+tun:
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  gso: true
+  strict-route: false
+  endpoint-independent-nat: false
+  udp-timeout: 300
+  route-exclude-address: [172.22.0.0/16]
+  dns-hijack:
+    - any:53
+    - tcp://any:53
